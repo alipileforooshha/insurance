@@ -2,7 +2,7 @@ import React from 'react'
 
 const Completed = () => {
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center car-and-insurance-info px-3 px-md-5 pt-3'>
+    <div className='d-flex flex-column justify-content-center align-items-center car-and-insurance-info px-3 px-md-5 pt-3 flex-1'>
       <div class="title mb-3">
           <h1 class="h5 fw-bold">پیش نویس بیمه نامه</h1>
         </div>
@@ -11,7 +11,7 @@ const Completed = () => {
             <h2 class="h6 fw-bold"><i class="fa fa-file-text ms-1"></i>مشخصات بیمه نامه جدید</h2>
           </div>
           <ul class="insurance-info-box rounded p-0">
-            <li class="d-flex align-items-center justify-content-between text-no-wrap mb-4">
+            <li class="d-flex align-items-center justify-content-between text-no-wrap mb-4 flex-row-reverse">
               <span class="text-nowrap">شرکت بیمه گذار</span>
               <div class="insurance-company d-flex align-items-center">
                 <span class="insurance-company-name text-nowrap mx-3">بیمه تجارت نو</span>
@@ -20,21 +20,21 @@ const Completed = () => {
                 </div> */}
               </div>
             </li>
-            <li class="d-flex align-items-center mb-4">
+            <li class="d-flex align-items-center mb-4 flex-row-reverse">
               <span>نوع پرداخت</span>
               <span>نقدی</span>
             </li>
-            <li class="d-flex align-items-center mb-4">
+            <li class="d-flex align-items-center mb-4 flex-row-reverse">
               <span>تعهدات مالی</span>
               <span>20,000,000 تومان</span>
             </li>
-            <li class="d-flex align-items-center mb-4">
+            <li class="d-flex align-items-center mb-4 flex-row-reverse">
               <span>مدت قرارداد</span>
               <span>یکساله</span>
             </li>
           </ul>
         </div>
-        <ul class="row mx-0 mt-4 btn-actions list-unstyled justify-content-between d-flex mt-3 px-0" dir="ltr">
+        <ul class="row mx-0 mt-4 btn-actions list-unstyled justify-content-between d-flex px-0" dir="ltr">
           <li class="col px-1">
             <div class="modal fade text-end" id="payment-confirm-modal" tabindex="-1"
               aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
