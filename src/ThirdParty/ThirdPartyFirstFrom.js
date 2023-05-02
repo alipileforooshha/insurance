@@ -1,12 +1,13 @@
 import React from 'react'
 import Completed from '../Components/Globals/Completed'
+import FirstPageStepsContainer from './FirstPageSteps/FirstPageStepsContainer'
 
 const ThirdPartyFirstFrom = () => {
 
     return (
         <div className='flex border w-1/2 mx-auto flex-row-reverse rounded-lg my-4'>
-            <div className=' flex-1'>ssssssssssss</div>
-            <div class="vr h-40 my-auto"></div>
+            <FirstPageStepsContainer />
+            <div class="vr h-56 my-auto"></div>
             <Completed />
         </div>
     )
