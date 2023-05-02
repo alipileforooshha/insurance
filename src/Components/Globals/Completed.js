@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Completed = () => {
+const Completed = ({postForm, setPostForm}) => {
   return (
     <div className='d-flex flex-column justify-content-center align-items-center car-and-insurance-info px-3 px-md-5 pt-3 flex-1'>
       <div className="title mb-3">
@@ -9,20 +9,24 @@ const Completed = () => {
         <div className="insurance-info-new w-full">
           <ul className="rounded p-0 flex flex-column justify-center items-between">
             <li className="flex justify-between mb-4 md:flex-row-reverse  md:flex-row flex-col">
-              <span className="">شرکت بیمه گذار</span>
-              <span className="">بیمه تجارت نو</span>
+              <span className="">مدل خودرو</span>
+              <span className="">{postForm.system_name ? postForm.system_name : '-'}</span>
             </li>
             <li className="flex justify-between mb-4 md:flex-row-reverse  md:flex-row flex-col">
-              <span>نوع پرداخت</span>
-              <span>نقدی</span>
+              <span>نوع خودرو</span>
+              <span>{postForm.kind_name ? postForm.kind_name : "-"}</span>
             </li>
             <li className="flex justify-between mb-4 md:flex-row-reverse flex-col md:flex-row">
-              <span>تعهدات مالی</span>
-              <span>20,000,000 تومان</span>
+              <span>نوع تمدید</span>
+              <span>{postForm.method_name ? postForm.method_name : '-'}</span>
             </li>
             <li className="flex justify-between mb-4 md:flex-row-reverse flex-col md:flex-row">
-              <span>مدت قرارداد</span>
-              <span>یکساله</span>
+              <span>{postForm.method_name}</span>
+              <span>{postForm.method_value ? postForm.method_value : '-'}</span>
+            </li>
+            <li className="flex justify-between mb-4 md:flex-row-reverse flex-col md:flex-row">
+              <span>وضعیت پلاک</span>
+              <span>{postForm.plaque > 0 ? (postForm.plaque == 1 ? 'تعویض پلاک نداشته ام' : 'تعویض پلاک داشته ام') : '-'}</span>
             </li>
           </ul>
         </div>

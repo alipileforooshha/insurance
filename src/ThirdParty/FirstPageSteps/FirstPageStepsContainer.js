@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import VehicleBrand from './VehicleBrand';
-// import NextButton from '../../Components/Globals/NextButton';
-// import PreviousButton from '../../Components/Globals/PreviousButton';
+import NextButton from '../../Components/Globals/NextButton';
+import PreviousButton from '../../Components/Globals/PreviousButton';
+import ThirdPartMethod from './ThirdPartMethod';
+import PlaqueChange from './PlaqueChange';
 
-const FirstPageStepsContainer = () => {
+const FirstPageStepsContainer = ({postForm, setPostForm}) => {
+    
     const [step, setStep] = useState(0);
     
-    const [postForm, setPostForm] = useState({
-        brand : null,
-        kind : null
-    });
-
     const stepFunc = () => {
         switch (step) {
             case 0:
                 return <VehicleBrand postForm={postForm} setPostForm={setPostForm} />
                 break;
-        
+            case 1:
+                return <ThirdPartMethod postForm={postForm} setPostForm={setPostForm} />
+                break;        
+            case 2:
+                return <PlaqueChange postForm={postForm} setPostForm={setPostForm} />
+                break;        
             default:
                 break;
         }
@@ -29,9 +32,9 @@ const FirstPageStepsContainer = () => {
             <div className="insurance-info-new w-full">
                 {stepFunc()}
             </div>
-            <div>
-                {/* <NextButton />
-                <PreviousButton /> */}
+            <div className='flex justify-around w-full my-8'>
+               <NextButton step={step} setStep={setStep} postForm={postForm}/>
+               {step > 0 ? <PreviousButton step={step} setStep={setStep} postForm={postForm}/> : null}
             </div>
         </div>
     )

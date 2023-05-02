@@ -6,7 +6,7 @@ import DateObject from 'react-date-object';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function NextButton() {
+const NextButton = ({step, setStep, postForm}) => {
 //   const navigate = useNavigate();
 
 //   function postData(){
@@ -31,75 +31,53 @@ function NextButton() {
 //     })
 //   }
 
-//   const checkCondition = () => {
-//     switch (state.step) {
-//       case 1:
-//         return checkRelativeCondition()
-//         break;
-//       case 2:
-//         return checkJobCondition()
-//         break;
-//       case 3:
-//         return checkAgeCondition()
-//         break;
-//       case 4:
-//         return checkInsuranceLengthCondition()
-//         break;
-//       case 5:
-//         return checkPaymentMethodCondition()
-//         break;
-//       case 6:
-//         return checkFirstPaymentCondition()
-//         break;
-//         default:
-//       break;
-//     }
-//   }
+  const checkCondition = () => {
+    switch (step) {
+      case 0:
+        return checkVehicleKind();
+        break;
+      case 1:
+        return checkMethod()
+        break;
+      case 2:
+        return checkPlaque()
+        break;
+    //   case 4:
+    //     return checkInsuranceLengthCondition()
+    //     break;
+    //   case 5:
+    //     return checkPaymentMethodCondition()
+    //     break;
+    //   case 6:
+    //     return checkFirstPaymentCondition()
+    //     break;
+    }
+  }
     
-//     const checkRelativeCondition = () => {
-//       if(state.relativity == 0){
-//         Swal.fire('نسبت با متقاضی نمیتواند خالی باشد');
-//         return 0;
-//       }
-//       return 1
-//     }
+    const checkVehicleKind = () => {
+        console.log('222222222')
+        if(postForm.system_name != null && postForm.kind_id != null && postForm.kind_name != null && postForm.system_id != null ){
+          return true;
+        }
+        Swal.fire('لطفا نوع و مدل خودرو را پر کنید');
+        return false;
+    }
     
-//     const checkJobCondition = () => {
-//       if(state.first_job == 0){
-//         Swal.fire('شغل معتبر نیست');
-//         return 0;
-//       }
-//       return 1
-//     }
+    const checkMethod = () => {
+      if(postForm.method_name != null && postForm.method_value > 0){
+        return true;
+      }
+      Swal.fire('لطفا نحوه تمدید و مقدار مربوط به آن را پر کنید');
+      return false;
+    }
     
-//     const checkAgeCondition = () => {
-//       if(state.birth_day == '' || state.birth_month == '' || state.birth_year =='' || isNaN(state.birth_day) || isNaN(state.birth_month) || isNaN(state.birth_year)){
-//         Swal.fire('لطفا سن را کامل مشخص کنید');
-//         return 0;
-//       }
-//       const date = new DateObject({ calendar: persian, locale: persian_fa })
-
-//       var age = date.year - state.birth_year;
-      
-//       if(date.month.number < state.birth_month){
-//           age = age - 1;
-//       }else if(date.month.number == state.birth_month && date.day < state.birth_day){
-//           age = age - 1;
-//       }
-        
-//       if(state.relativity == 1 && age < 18){
-//         Swal.fire('your age is under 18');
-//         return 0;
-//       }else if(age >= 65){
-//         Swal.fire('age should be under 65')
-//         return 0;
-//       }
-//       setState({
-//         ...state,
-//         age : age
-//     });
-//       return 1
-//     }
+    const checkPlaque = () => {
+      if(postForm.plaque == null){
+         Swal.fire('لطفا وضعیت تعویض پلاک را مشخص کنید');
+         return false;
+      }
+      return true;
+    }
     
 //     const checkInsuranceLengthCondition = () => {
 //       if(state.insurance_length == '' || isNaN(state.insurance_length)){
@@ -133,16 +111,15 @@ function NextButton() {
 
   return (
     <div>
-        <button className='btn btn-primary mt-3 w-50' 
-        // onClick={() => {
-        //     if(checkCondition() && state.step <= 6){
-        //       setState({
-        //         ...state,
-        //         step : state.step + 1
-        //       },console.log(state));
-        //     }
-        // }}
-        >بعدی</button>
+        <button className="border-0 px-sm-5 text-white btn-right float-none float-sm-end fw-bold bg-green-500 rounded py-2 px-4" 
+        onClick={() => {
+            console.log('step',step)
+            if(checkCondition() && step < 2){
+                console.log('wwwwwwwwwww')
+              setStep(step + 1);
+            }
+        }}
+        >{step == 2 ? 'استعلام قیمت' : 'بعدی'}</button>
     </div>
   )
 }
