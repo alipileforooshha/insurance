@@ -21,12 +21,12 @@ const Completed = ({postForm, setPostForm}) => {
               <span>{postForm.method_name ? postForm.method_name : '-'}</span>
             </li>
             <li className="flex justify-between mb-4 md:flex-row-reverse flex-col md:flex-row">
-              <span>{postForm.method_name}</span>
+              <span>{postForm.method_name ? postForm.method_name : "شناسه تمدید"}</span>
               <span>{postForm.method_value ? postForm.method_value : '-'}</span>
             </li>
             <li className="flex justify-between mb-4 md:flex-row-reverse flex-col md:flex-row">
               <span>وضعیت پلاک</span>
-              <span>{postForm.plaque > 0 ? (postForm.plaque == 1 ? 'تعویض پلاک نداشته ام' : 'تعویض پلاک داشته ام') : '-'}</span>
+              <span>{postForm.plaque > -1 ? (postForm.plaque == 1 ? 'تعویض پلاک داشته ام' : 'تعویض پلاک نداشته ام') : '-'}</span>
             </li>
           </ul>
         </div>

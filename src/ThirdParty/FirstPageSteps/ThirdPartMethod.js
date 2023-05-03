@@ -20,12 +20,14 @@ const ThirdPartMethod = ({postForm, setPostForm}) => {
       <div className='flex flex-row-reverse justify-center'>
         <div className='flex-1 mx-3 flex flex-col justify-start items-end'>
           <label className='my-2'>مدل خودرو</label>
-          <select className='form-control form-select py-2 ' value={postForm.method_id} onChange={(e) => {
+          <select className='form-control form-select py-2 ' value={postForm.method_name} onChange={(e) => {
             const found = options.find(m => m.caption == e.target.value);
             // setSystemId(found.fanavaran_id);
+            console.log('found',found)
             setPostForm({
               ...postForm,
               method_name : e.target.value,
+              method_id : found.value
             });
             // setKindId(e.target.value);
           }}>
